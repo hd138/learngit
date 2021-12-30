@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div0{
+            display: flex;
+            width: 400px;
+            height: 500px;
+            background-color: violet;
+        }
+        #div0 div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+           /*  flex-basis: 30%;  设置这个值后 width将会失效*/
+        }
+        /* 400-50-100=250px
+           250/4=50
+           50+50
+           100+50
+        
+        #div0 div:nth-child(1){
+            flex-basis: 50px;
+            flex-grow: 1;
+        }
+        #div0 div:nth-child(2){
+            flex-basis: 100px;
+            flex-grow: 4;
+        }*/
+        /* 400-300=-200
+        200/4=50
+        300-50=250
+        300-150=150 */
+        #div0 div:nth-child(1){
+            flex-basis: 300px;
+            flex-grow: 1;/* 设置弹性盒子的扩展比率 */
+            flex-shrink: 1;/* 设置弹性盒子的缩小比率 */
+        }
+        #div0 div:nth-child(2){
+            /* flex-basis: 300px;
+            flex-grow: 4;
+            flex-shrink: 3; */
+            flex-flow: 4 3 300;/* flex-flow是 flex-grow flex-shrinkflex-basisd的简写注意先后顺序*/
+        }
+    </style>
+</head>
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

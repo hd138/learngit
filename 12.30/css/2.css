@@ -1,0 +1,48 @@
+.top{
+    font-size: 60px;
+    max-width: 980px;
+    padding: 50px 20px; /* 上下边距是50px 左右边距是20px */
+    margin: 0 auto;  /* 水平居中 */
+}
+nav {
+   background-color: black;
+    position: sticky;   /* 粘性定位 */
+    top: 0;  /* 将导航栏滚动到顶部时不在滚动 */
+}
+nav ul{
+    list-style: none; /* 移除项目符号 */
+    display: flex;   /* 设置为弹性布局 */
+    justify-content: space-between;  /* 平均分布在该行上，俩边不留间隔空间 */
+    height: 40px;
+    width: 100%;
+}
+nav a{
+    color: white;
+    text-decoration: none; /* 移除下滑线 */
+    padding: 40px;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+.grid{
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+    display: grid;   /* 网格布局 */
+    grid-template-columns: 3fr 1fr;  /* 一边占4分之3一边占4分之1 */
+    grid-gap: 20px; /* 行与列之间的间隔为20px */
+}
+.tupian {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 1fr; /* 各占50% */
+  }
+  .diyi{
+    width: 200px;
+    float: left; /* 左浮动 */
+    margin: 0 20px 20px 0;
+  }

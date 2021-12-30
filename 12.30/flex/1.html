@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #div0{
+        width: 400px;
+        background-color: red;
+        display: flex;
+        /*  flex-direction: row;  默认排序从左向右 row-reverse从右向左   column 从上到下 column-reverse 从下到上
+        flex-wrap: wrap; 换行第一行在上面 wrap-reverse 换行第一行在下面*/ 
+        flex-flow: row wrap;/* flex-flow是flex-direction flex-wrap的简写*/
+        justify-content: flex-start ;/* 默认值从左到右flex-end从右到左紧挨着行的结尾 
+        center 居中显示space-between平均分布在该行上，俩边不留间隔空间 space-around 平均分布在该行上，俩边留有一半的间隔空间*/
+        align-items: flex-start ;/*默认 与开头 center在交叉轴上面居中显示flex-end 与结尾看flex-flow的排序 处理单行*/
+        /* align-conter把多行当成一个整体 */
+        height: 400px;
+        }
+        #div0 div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+          /*   margin-top: 10px; */
+        }
+    </style>
+</head>
+<body>
+    <div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
