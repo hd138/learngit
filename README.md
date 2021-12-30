@@ -14,5 +14,9 @@
 2. 为什么有时候合并的时候出先merge: dve - not something we can merge不能合并的东西（文件名可能出现错误，用git branch查看当前分支）
 3. 合并冲突只能手动修改吗？
 
-## Grid
+## 12.29
+>grid
 1.  grid-column 和 grid-row 两个属性没懂（column代表行/列  grid-row在第几行）
+## 12.29
+>弹性布局
+1. 响应式布局和弹性布局的区别，什么时候用哪一个会更好一些？
