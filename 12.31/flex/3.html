@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div0{
+            display: flex;
+
+        }
+        #div0 div:nth-child(1){
+            background-color: yellow;
+            flex: 0 0 50px;
+        }
+        #div0 div:nth-child(2){
+            background-color: red;
+            flex:1 1 auto; /* 自适应 */
+        }
+        #div0 div:nth-child(3){
+            background-color: yellow;
+            flex: 0 0 50px;
+        }
+        @media screen and (min-device-width:400px) and (max-device-width:500px) { 
+            #div0 div:nth-child(2){
+            background-color: blue;
+        }
+        }
+        @media screen and (min-device-width:501px) and (max-device-width:600px) { 
+            #div0 div:nth-child(2){
+            background-color: green;
+           
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
