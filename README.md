@@ -45,4 +45,8 @@
 1. 用div把页面分为三部分：导航栏  内容部分 版权部分
 把导航栏分成四部分：上层导航栏 右边内容 中间轮播图 左边内容 一个大div套着其他小div加上class容易调用，在用ul li a input 来填充内容
 在用css：margin padding width height float慢慢调试
- >问题
+
+
+## 1.10
+>JavaScript
+1. 声明变量 let const var 有什么区别，为什么尽量不用var来声明变量
