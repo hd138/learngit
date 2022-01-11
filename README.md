@@ -49,4 +49,4 @@
 
 ## 1.10
 >JavaScript
-1. 声明变量 let const var 有什么区别，为什么尽量不用var来声明变量
+1. 声明变量 let const var 有什么区别，尽量少用var来声明变量吗?
