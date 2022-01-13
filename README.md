@@ -83,3 +83,8 @@
 5. 持续提问题。
 
 ---
+
+## 1.13
+1. 为什么 `position:stisky`实现效果之后下滑滚轮内容会被隐藏，上话滑滚轮后出现？
+2. 为什么有的时候用 `position:stisky`粘性定位没有用？
+3.  `flex`和`position: absolute/fixed`一起用为什么`flex`会失效？
