@@ -85,6 +85,9 @@
 ---
 
 ## 1.13
-1. 为什么 `position:stisky`实现效果之后下滑滚轮内容会被隐藏，上话滑滚轮后出现？
+1. 为什么 `position:stisky`实现效果之后下滑滚轮内容会被隐藏，上滑滚轮后出现？
 2. 为什么有的时候用 `position:stisky`粘性定位没有用？
 3.  `flex`和`position: absolute/fixed`一起用为什么`flex`会失效？
+
+## 1.14
+1. `switch`语句和`if else if`的区别？什么时候用`switch`好一些，什么时候用`if else if`好一些
