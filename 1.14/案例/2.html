@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let year = prompt("请输入你要检测的年份");//弹出输入框
+      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {//用if语句来判断是否为闰年，是执行if大括号里的，否则else里面的
+        alert("输入的年份是闰年");
+      } else {
+        alert("输入的年份是平年");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
