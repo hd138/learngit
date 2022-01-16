@@ -85,9 +85,22 @@
 ---
 
 ## 1.13
+
 1. 为什么 `position:stisky`实现效果之后下滑滚轮内容会被隐藏，上滑滚轮后出现？
 2. 为什么有的时候用 `position:stisky`粘性定位没有用？
-3.  `flex`和`position: absolute/fixed`一起用为什么`flex`会失效？
+
+> 关于 `sticky` ：
+>
+> 1. 注意拼写
+> 2. 参考 [这篇文章](https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/)
+> 3. 很多互动的样式变化是要借助js来实现的，需要配合滚动事件来处理
+
+3. `flex`和`position: absolute/fixed`一起用为什么`flex`会失效？
+
+> `absolute` 和 `fixed` 定位会使元素脱离文档流，这时候元素宽度会变成 `auto` ，并不是 `flex` 失效。他们一个是定位，一个是布局，不在一个层级，要分开来理解，他们之间也不会冲突。
 
 ## 1.14
+
 1. `switch`语句和`if else if`的区别？什么时候用`switch`好一些，什么时候用`if else if`好一些
+
+> 两者等效，`switch` 用于判断分支比较多的情况，`if else if` 用于分支比较少的情况。
