@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1. .stop修饰符的使用 -->
+			<div @click="divClick">
+				aaa
+				<button @click.stop="btnClick">按钮</button>
+			</div>
+
+			<!-- 2. .prevent修饰符的使用 -->
+			<form action="baidu">
+				<input type="submit" value="提交" @click.prevent="submitClick" />
+			</form>
+		</div>
+
+		<!-- 3. 监听某个按键键帽的修饰符 -->
+		<input type="text" @keyup="keyup" />
+    <!-- 回车 -->
+		<input type="text" @keyup.enter="keyup" />
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+				},
+				methods: {
+					btnClick() {
+						console.log('btnClick');
+					},
+					divClick() {
+						console.log('divClick');
+					},
+					submitClick() {
+						console.log('submitClick');
+					},
+					keyup() {
+						console.log('keyup');
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

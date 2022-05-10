@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 错误做法 这里不可以使用Mustache语法 -->
+		<!-- <img src="{{imgurl}}" alt=""> -->
+		<!-- 正确做法 使用v-bind语法 -->
+		<div id="app">
+			<!-- <img v-bind:src="imgurl" alt="" />
+			<a v-bind:href="srcurl">百度一下</a> -->
+			<!-- 语法糖 -->
+			<img :src="imgurl" alt="" />
+			<a :href="srcurl">百度一下</a>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '你好啊',
+					imgurl: 'https://www.runoob.com/wp-content/uploads/2017/01/vue.png',
+					srcurl: 'http://www.baidu.com',
+				},
+			});
+		</script>
+	</body>
+</html>
