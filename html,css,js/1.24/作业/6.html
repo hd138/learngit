@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do {
+        let flag = prompt("欢迎使用简易计算器:\n1.加法运算；\n2.减法运算；\n3.乘法运算；\n4.除法运算；\n5.退出；\n请输入你的选项");
+        //弹出输入框让用户选择
+        if (flag == "1") {//如果用户输入的为1执行下面的代码
+          let = num1 = prompt("输入第一个数");
+          let = num2 = prompt("输入第二个数");
+          let sum = parseFloat(num1) + parseFloat(num2);//用户输入的是字符串+会相连要转换成数字型
+          alert(sum);//弹出计算后的结果
+        } else if (flag == "2") {//如果用户输入的为2执行下面的代码
+          let = num1 = prompt("输入第一个数");
+          let = num2 = prompt("输入第二个数");
+          let sum = parseFloat(num1) - parseFloat(num2);
+          alert(sum);
+        } else if (flag == "3") {//如果用户输入的为3执行下面的代码
+          let = num1 = prompt("输入第一个数");
+          let = num2 = prompt("输入第二个数");
+          let sum = parseFloat(num1) * parseFloat(num2);
+          alert(sum);
+        } else if (flag == "4") {//如果用户输入的为4执行下面的代码
+          let = num1 = prompt("输入第一个数");
+          let = num2 = prompt("输入第二个数");
+          let sum = parseFloat(num1) / parseFloat(num2);
+          alert(sum);
+        }
+      } while (flag != 5);//因为是代码是从上到下使用的，到这一步如果用户输入的是1-4之外的就会退出
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // function getRandom(min, max) {
+      //   return Math.floor(Math.random() * (max - min + 1)) + min;
+      // }
+      // let random = getRandom(1, 10);
+      // while (true) {
+      //   //一直循环
+      //   let num = prompt("你来猜？ 请输入1-10之间的数字");
+      //   if (num > random) {
+      //     alert("猜大了");
+      //   } else if (num < random) {
+      //     alert("猜小了");
+      //   } else {
+      //     alert("猜对了");
+      //     break;
+      //   }
+      // }
+
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      let random = getRandom(1, 50);
+      console.log(random);//在控制台上输出答案
+      var i = 0;//声明全局变量
+      do {
+        var num = prompt("你来猜？ 请输入1-50之间的数字");//声明全局变量
+        if (num > random) {
+          alert("猜大了");
+        } else if (num < random) {
+          alert("猜小了");
+        }
+        i++;
+      } while (num != random && i < 10);//输出的结果不等于随机生成的结果和循环次数大于10
+      {
+        if (num == random) {//判断输出的结果是否等于随机生成
+          alert("恭喜你！猜对了！");
+        } else if (i == 10) {//判断循环的次数等于10吗
+          alert("你的十次机会已达上限，游戏失败，欢迎下次再来~");
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

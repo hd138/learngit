@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .box {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 50px 0 0 100px;
+        border: 1px solid #000000;
+        cursor: move;
+      }
+
+      .box img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .mask {
+        display: none;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 0px;
+        left: 0px;
+        border: 1px solid #ccc;
+        background: yellow;
+        opacity: 0.5;
+      }
+
+      .big {
+        display: none;
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        top: -1px;
+        left: 411px;
+        border: 1px solid #000000;
+        overflow: hidden;
+      }
+
+      .big img {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        left: 0px;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img
+        src="https://img12.360buyimg.com/n1/s450x450_jfs/t1/59022/28/10293/141808/5d78088fEf6e7862d/68836f52ffaaad96.jpg"
+        alt=""
+      />
+      <div class="mask"></div>
+      <div class="big">
+        <img
+          src="https://img12.360buyimg.com/n1/s450x450_jfs/t1/59022/28/10293/141808/5d78088fEf6e7862d/68836f52ffaaad96.jpg"
+          alt=""
+          class="bigImg"
+        />
+      </div>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        let box = document.querySelector(".box");
+        let mask = document.querySelector(".mask");
+        let big = document.querySelector(".big");
+        // 鼠标进入事件
+        box.addEventListener("mouseover", function (e) {
+          mask.style.display = "block";
+          big.style.display = "block";
+        });
+        // 鼠标移出事件
+        box.addEventListener("mouseout", function () {
+          mask.style.display = "none";
+          big.style.display = "none";
+        });
+        // 鼠标移动事件
+        box.addEventListener("mousemove", function (e) {
+          // 确认mask 的位置
+          let x = e.pageX - this.offsetLeft - mask.offsetWidth / 2;
+          let y = e.pageY - this.offsetTop - mask.offsetHeight / 2;
+          // 最大偏移值，即大盒子-放大镜层
+          let maskMax = box.offsetWidth - mask.offsetWidth;
+
+          // 超出偏移量，强制修改
+          if (x <= 0) {
+            x = 0;
+          }
+          if (x >= maskMax) {
+            x = maskMax;
+          }
+          if (y <= 0) {
+            y = 0;
+          }
+
+          if (y >= maskMax) {
+            y = maskMax;
+          }
+
+          // 修改放大镜层的位置
+          mask.style.left = x + "px";
+          mask.style.top = y + "px";
+
+          // 计算大图的最大距离
+          let bigImg = document.querySelector(".bigImg");
+          let bigMax = bigImg.offsetWidth - big.offsetWidth;
+          // 两最大距离的商，即放大的倍数
+          let boom = bigMax / maskMax;
+          let bigX = x * boom;
+          let bigY = y * boom;
+          // 修改大图在盒子中的定位
+          bigImg.style.left = -bigX + "px";
+          bigImg.style.top = -bigY + "px";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+      .current {
+        background-color: purple;
+      }
+    </style>
+    <script src="../js/jquery.min.js"></script>
+  </head>
+  <body>
+    <div></div>
+    <ul>
+      <li>我们都是好样的</li>
+      <li>我们都是好样的</li>
+      <li>我们都是好样的</li>
+    </ul>
+    <p>我是p</p>
+    <script>
+        $(function(){
+            $("div").on({
+                click:function(){
+                    console.log("我点击了");
+                },
+                mouseover:function(){
+                    console.log('我鼠标经过了');
+                }
+            })
+            $("ul").on("click","li",function(){
+                alert(11)
+            })
+            $("ul").off("click","li")
+            // 事件解绑 off
+            // $("div").off();//解除了div身上的所有事件
+            $("div").off("click");//解除了div身上的点击事件
+            
+            // one() 它只能触发事件一次
+             $("p").one("click",function(){
+                 alert(11)
+             })
+        })
+    </script>
+  </body>
+</html>

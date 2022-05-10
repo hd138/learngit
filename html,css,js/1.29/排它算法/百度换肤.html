@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: url("https://tse2-mm.cn.bing.net/th/id/OIP-C.2rQ25qnSMQHXGcHz3Rp2pAHaEo?w=292&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7") no-repeat center top;
+             width: 1200px;
+        }
+        .baidu{
+            width: 510px;
+            height: 200px;
+            margin: 100px auto;
+        }
+        .baidu li{
+            list-style: none;
+            float: left;
+            border: 1px solid #ccc;
+            padding-top: 4px;
+        }
+        .baidu img{
+            width: 100px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="baidu">
+        <li><img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.2rQ25qnSMQHXGcHz3Rp2pAHaEo?w=292&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt=""></li>
+        <li><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.bLC0h31gCZn-WfetXwPuhAHaEo?w=292&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt=""></li>
+        <li><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.nfC2tVNM9TgwQ5QuqECd6wHaFj?w=243&h=182&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt=""></li>
+        <li><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.2x6rU_8mnlcJ2Q-LGX-vtwHaEo?w=290&h=181&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt=""></li>
+        <script>
+            //获取元素
+           let imgs=document.querySelector('.baidu').querySelectorAll('img');
+        //    循环注册事件
+           for (let i = 0; i < imgs.length; i++) {
+               imgs[i].onclick=function(){
+                   //把this.src(是我们当前点击图片的路径)给body就可以
+                  document.body.style.backgroundImage='url('+this.src+')'
+               }
+               
+           }
+        </script>
+    </ul>
+</body>
+</html>

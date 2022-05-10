@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: relative;
+            width: 250px;
+            height: 360px;
+            border: 1px solid #ccc;
+        }
+        span{
+            position: absolute;
+            width: 13px;
+            border: 1px solid #333;
+            right: 3px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 关闭广告 -->
+    <div class="box">
+        广告
+        <span class="font">X</span>
+        <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.dVEo9twvW2LjbaOpuIDGmQHaKe?w=208&h=294&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="" class="img">
+
+    </div>
+    <script>
+        let box=document.querySelector('.box')
+        let x=document.querySelector('.font')
+        x.onclick=function(){
+            box.style.display='none'
+        }
+    </script>
+</body>
+</html>

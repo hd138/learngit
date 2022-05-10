@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //用户输入一个数判断是否为素数
+      let a = 0;
+      function getSun(num) {
+        for (let i = 2; i < num; i++) {
+          //因为素数是只能被自己和1整除所以i初始值为2
+          if (num % i == 0) {
+            a++;//如果能被其他的值整除则加一次次数
+          }
+        }
+        if (a == 0) {//判断次数如果等于0则为素数
+          alert("这个数是素数");
+        } else {//判断次数如果不等于0则不是素数
+          alert("这个数不是素数");
+        }
+      }
+      getSun((num = prompt("输入一个数")));
+    </script>
+  </head>
+  <body></body>
+</html>

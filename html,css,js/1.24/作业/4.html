@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function swithArr(arr) {//创建一个函数数组
+        let newArr = [];
+        for (let i = arr.length - 1; i >= 0; i--) {//遍历
+          newArr[newArr.length] = arr[i];
+        }
+        return newArr;//返回值
+      }
+      let arr1 = swithArr([4, 8, 9, 100, 36, 52]);
+      console.log(arr1);
+      let dog = swithArr(["小猫", "猪", "狗"]);
+      console.log(dog);
+    </script>
+  </head>
+  <body></body>
+</html>

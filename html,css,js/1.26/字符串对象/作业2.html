@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 给定一个字符串如：abaasdffggghhjjkkddsssss3444343
+      let str = "abaasdffggghhjjkkddsssss3444343";
+      //1.字符串的长度
+      console.log(str.length);//31
+      // 2.取出指定位置的字符如：0，3，5，9
+      console.log(str.substr(0, 1));//从第0个开始截取只截一个
+      console.log(str.substr(3, 1));
+      console.log(str.substr(5, 1));
+      console.log(str.substr(9, 1));
+      //查找字符是否在以上字符串中存在，如i,c,b
+      // 只要返回-1则不存在
+      console.log(str.indexOf("i")); //-1
+      console.log(str.indexOf("b"));
+      console.log(str.indexOf("c")); //-1
+      //替换指定的字符，如g替换成22，s替换成b
+      while (str.indexOf("g") !== -1) {//循环判断是否在字符串存在存在则执行不存在跳过进行下次循环直到循环完毕
+        str = str.replace("g", "22");
+      }
+      console.log(str);
+      while (str.indexOf("s") !== -1) {
+        str = str.replace("s", "b");
+      }
+      console.log(str);
+      //截取指定开始位置到结束位置的字符串如：取得1-5的字符串
+      console.log(str.substr(1, 5));
+      //找出以上字符串中出现最多的字符和次数
+      let num = 0;
+      let o = {};
+      for (let i = 0; i < str.length; i++) {
+        let chars = str.charAt(i);
+        if (o[chars]) {
+          //o[chars]得到的是属性值
+          o[chars]++;
+        } else {
+          o[chars] = 1;
+        }
+      }
+      console.log(o);
+      let max = 0;
+      let ch = "";
+      for (let k in o) {
+        if (o[k] > max) {
+          max = o[k];
+          ch = k;
+        }
+      }
+
+      console.log("最多次数的字符是" + ch + "次数是" + max);
+    </script>
+  </head>
+  <body></body>
+</html>

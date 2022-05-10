@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" index='1'></div>
+    <script>
+        let div=document.querySelector('div')
+        //获取元素的属性值
+        //(1) element.属性 获取元素本身自带的属性
+        console.log(div.id);//demo
+        //(2)element.getAttribute('属性')  get得到获取 attribute 属性 我们自己添加的属性叫做自定义属性
+        console.log(div.getAttribute('id'));//demo
+        console.log(div.getAttribute('index'));//1
+    </script>
+</body>
+</html>

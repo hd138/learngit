@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        margin: 100px auto;
+        width: 600px;
+        text-align: center;
+      }
+      thead tr {
+        background-color: blueviolet;
+        font-size: 14px;
+      }
+      tbody tr {
+        background-color: #ccc;
+      }
+      tbody td {
+        border: 1px solid rgb(194, 149, 149);
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="j_cbAll" /></th>
+          <th>商品</th>
+          <th>价钱</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>iphone8</td>
+          <td>8000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>iphone8</td>
+          <td>8000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>iphone8</td>
+          <td>8000</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>iphone8</td>
+          <td>8000</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      let j_cbAll = document.getElementById("j_cbAll");
+      let j_tbs = document.getElementById("j_tb").getElementsByTagName("input"); //下面所有的复选框
+      j_cbAll.onclick = function () {
+        //this.checked它可以得到当前复选框的选中状态如果是true就是选择false就是没选中
+        for (let i = 0; i < j_tbs.length; i++) {
+          j_tbs[i].checked = this.checked;
+        }
+      };
+      for (let i = 0; i < j_tbs.length; i++) {
+        j_tbs[i].onclick = function () {
+          // flag控制全选按钮是否选中
+          let flag = true;
+          //   每次点击下面的复选框都要循环检查这四个按钮是否被全部选中;
+          for (let i = 0; i < j_tbs.length; i++) {
+            if (!j_tbs[i].checked) {
+              flag = false;
+              break;
+              //退出for循环这样可以提高执行效率，因为只要有一个没有被选中，剩下的就无需循环，退出
+            }
+          }
+          j_cbAll.checked = flag;
+        };
+      }
+    </script>
+  </body>
+</html>

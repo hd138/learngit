@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //Math对象随机方法  random()返回一个随机小数
+      // 这个方法里面不跟参数
+        console.log(Math.random());
+      // 得到俩个数这间的随机整数 并且包含这俩个整数
+      // Math.floor(Math.random()*(max-min+1))+min;
+      function getRandom(min,max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      console.log(getRandom(1, 10));
+
+    //   随机点名
+    let arr=['张三','李四','王五','刘德华','李厚豪','后羿','吕树'];
+    console.log(arr[getRandom(0, arr.length-1)]);
+    </script>
+  </head>
+  <body></body>
+</html>

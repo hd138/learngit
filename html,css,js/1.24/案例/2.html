@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function Wzry(uname, type, blood) {
+        //创建一个函数对象
+        this.name = uname;
+        this.type = type;
+        this.blood = blood;
+        this.attack = function (way) {
+          console.log(way);
+        };
+      }
+      let lp = new Wzry("廉颇", "力量型", 500); //实参       
+      console.log(lp.name);
+      console.log(lp["type"]);
+      console.log(lp.blood);
+      lp.attack("进战");
+      let hy = new Wzry("后羿", "射手", 100);
+      console.log(hy.name);
+      console.log(hy["type"]);
+      console.log(hy.blood);
+      hy.attack("远程");
+    </script>
+  </head>  
+  <body></body>
+</html>

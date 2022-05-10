@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //九九乘法表
+      let str = "";
+      for (let i = 1; i <= 9; i++) {
+        //外层循环控制行数
+        for (let j = 1; j <= i; j++) {
+          //里层循环控制每一行的个数j<=i
+          //1x2=2
+          str += j + "x" + i + "=" + i * j + "\t";
+        }
+        str += "\n";
+      }
+      console.log(str);
+    </script>
+  </head>
+  <body></body>
+</html>

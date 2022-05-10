@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //写一个函数，用户输入任意俩个数字的任意算术运算符，并能弹出运算后的结果
+      let sum = 0;
+      function getSum(num1, num2) {
+        let operator = prompt("请输入操作符");
+        if (operator == "+") {
+          return (sum = parseFloat(num1) + parseFloat(num2)); //加号相连转为数字型
+        } else if (operator == "-") {
+          return (sum = num1 - num2);
+        } else if (operator == "*") {
+          return (sum = num1 * num2);
+        } else if (operator == "/") {
+          return (sum = num1 / num2);
+        }
+      }
+      getSum((num1 = prompt("输入第一个数")), (num2 = prompt("输入第2个数")));
+      alert(sum);
+    </script>
+  </head>
+  <body></body>
+</html>

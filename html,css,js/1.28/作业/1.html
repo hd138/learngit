@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        div{
+            width: 500px;
+            margin: 100px auto;
+        }
+        .txt1{
+            border: 1px solid pink;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- 用户名显示隐藏的功能 -->
+    <div>
+        <input type="text" value="邮箱/ID/手机号" class="txt">
+        <input type="text" value="密码" class="pwd">
+    </div>
+    <script>
+        let text=document.querySelector('.txt')
+        let pwd=document.querySelector('.pwd')
+        text.onfocus=function(){
+            if (this.value==='邮箱/ID/手机号') {
+                this.value=''
+                this.className='txt1'
+            }    
+        }
+        text.onblur=function(){
+            if (this.value==='') {
+                this.value='邮箱/ID/手机号'
+            }
+        }
+        pwd.onfocus=function(){
+            if (this.value==='密码') {
+                this.value='';
+                this.type='password'
+                this.className='txt1'
+            }
+        }
+        pwd.onblur=function(){
+            if (this.value==='') {
+                this.value='密码'
+                this.type='text'
+            }
+        }
+    </script>
+</body>
+</html>

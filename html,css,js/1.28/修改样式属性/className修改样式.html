@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background: pink;
+      }
+      .change {
+        background-color: purple;
+        color: #fff;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">文本</div>
+    <script>
+      //1.使用element.style修改样式属性 如果样式比较少 或者功能简单的情况下使用
+      let div = document.querySelector("div");
+      div.onclick = function () {
+        // div.style.backgroundColor='purple'
+        // div.style,color='#fff'
+        //让我们当前元素名改成了change
+
+        //我们可以通过修改元素className更改元素样式 适合与样式较多或者功能复杂的情况下使用
+        div.className = "change";
+        //如果想要保留原先的类名，我们可以这样
+        div.className = ".box change";
+      };
+    </script>
+  </body>
+</html>

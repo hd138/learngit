@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 创建一个车的对象，包含有重量、颜色、牌子，可载人，拉货和耕田。
+      //利用对象字面量创建对象
+      let car = {
+        weight: "500kg",
+        color: "白色",
+        pz: "雪佛兰",
+        model: "开拓者",
+        people: function () {
+          console.log("载人");
+        },
+        pull: function () {
+          console.log("拉货");
+        },
+        plow: function () {
+          console.log("耕田");
+        },
+      };
+      console.log(car.weight);
+      console.log(car.color);
+      console.log(car.pz);
+      console.log(car.model);
+      car.people();
+      car.pull();
+      car.plow();
+
+      //利用new Object来创建对象
+      let car1 = new Object();
+      car1.weight = "400kg";
+      car1.color = "黑色";
+      car1.pz = "奥迪";
+      car1.model = "A8";
+      car1.people = function () {
+        console.log("载人");
+      };
+      car1.pull = function () {
+        console.log("拉货");
+      };
+      car1.plow = function () {
+        console.log("耕田");
+      };
+      console.log("--------------------------------");
+      console.log(car1.weight);
+      console.log(car1.color);
+      console.log(car1.pz);
+      console.log(car1.model);
+      car1.people();
+      car1.pull();
+      car1.plow();
+
+      //创建一个对象（构建函数方法）
+      function car2(weight, color, pz, model) {
+        this.weight = weight;
+        this.color = color;
+        this.pz = pz;
+        this.model = model;
+        this.people = function (pe) {
+          console.log(pe);
+        };
+        this.pull = function (pu) {
+          console.log(pu);
+        };
+        this.plow = function (pl) {
+          console.log(pl);
+        };
+      }
+      let car3 = new car2("600kg", "黄色", "上汽大众", "凯迪拉克");
+      console.log("--------------------------------");
+      console.log(car3.weight);
+      console.log(car3.color);
+      console.log(car3.pz);
+      console.log(car3.model);
+      car3.people("载人");
+      car3.pull("拉货");
+      car3.plow("耕田");
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        
+      let myMath = {
+        PI: 3.4115926,
+        max: function () {
+          let max = arguments[0];
+          for (let i = 1; i < arguments.length; i++) {
+            if (arguments[i] > max) {
+              max = arguments[i];
+            }
+          }
+          return max;
+        },
+        min: function () {
+          let min = arguments[0];
+          for (let i = 1; i < arguments.length; i++) {
+            if (arguments[i] < min) {
+              min = arguments[i];
+            }
+          }
+          return max;
+        },
+      };
+      console.log(myMath.PI);
+      console.log(Math.max(1, 5, 9));
+      console.log(Math.min(9, 2, 6));
+    </script>
+  </head>
+  <body></body>
+</html>

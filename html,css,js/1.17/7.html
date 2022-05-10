@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let num=prompt('请输入你班级里的人数');
+        let sum=0;//班级的总成绩
+        let average=0;//班级的平均分
+        for(let i=1;i<=num; i++){
+            let score=prompt('第'+i+'个学生的成绩');
+            sum=sum+parseFloat(score);//从prompt里面取出来的都是字符型的要转换为数字型的
+        }
+        average= sum/num;
+        alert('班级总成绩是'+sum);
+        alert('班级的平均分是'+average)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

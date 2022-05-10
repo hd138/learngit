@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        //用户输入俩个数弹出最大的一个
+      let max;
+      function getMax(num1, num2) {
+        if (num1 > num2) {
+          return (max = num1);
+        } else {
+          return (max = num2);
+        }
+      }
+      getMax((num1 = prompt("输入第一个数")), (num2 = prompt("输入第二个数")));
+      alert(max);
+    </script>
+  </head>
+  <body></body>
+</html>

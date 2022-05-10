@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <img src="https://img.mp.itc.cn/upload/20170410/2d97e14d89f14a45ac1a3b8f833d3d50_th.jpeg" alt="">
+    <div>上午好</div>
+    <script>
+        let img=document.querySelector('img');
+        let div=document.querySelector('div');
+        let date=new Date();
+        let h=date.getHours();
+        if (h<12) {
+            img.src='https://img.mp.itc.cn/upload/20170410/2d97e14d89f14a45ac1a3b8f833d3d50_th.jpeg'
+            div.innerHTML='早上好'
+        }else if(h<18){
+            img.src='https://cn.bing.com/images/search?view=detailV2&ccid=Gld88xho&id=D079B87B1F4BA9545A1A2235CD2D87B51B32E035&thid=OIP.Gld88xhoe6unHTYDpJJjmQHaFD&mediaurl=https%3a%2f%2fphoto.16pic.com%2f00%2f21%2f69%2f16pic_2169068_b.jpg&exph=698&expw=1024&q=%e4%b8%8b%e5%8d%88%e5%a5%bd&simid=608024948203203843&FORM=IRPRST&ck=8D3736B1369185EBDF1FEC61FF2046AB&selectedIndex=0'
+            div.innerHTML='下午好'
+        }
+    </script>
+</body>
+</html>

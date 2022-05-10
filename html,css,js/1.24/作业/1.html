@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //利用对象字面量创建对象
+      let win = {
+        color: "黑色",
+        weight: "2kg",
+        u: "败家之眼",
+        model: "魔霸5新锐",
+        role: function () {
+          console.log("看电影");
+        },
+        listen: function () {
+          console.log("听音乐");
+        },
+        play: function () {
+          console.log("打游戏");
+        },
+        work: function () {
+          console.log("敲代码");
+        },
+      };
+     
+      console.log(win.color);
+      console.log(win.weight);
+      console.log(win.u);
+      console.log(win["model"]);
+      win.work();
+      win.listen();
+      win.play();
+      win.work();
+
+
+
+      //利用new Object来创建对象
+      let win2 = new Object();
+      win2.color = "白色";
+      win2.weight = "3kg";
+      win2.u = "神舟";
+      win2.model = "战神z7";
+      win2.role = function () {
+        console.log("看电影");
+      };
+      win2.listen = function () {
+        console.log("听音乐");
+      };
+      win2.play = function () {
+        console.log("打游戏");
+      };
+      win2.work = function () {
+        console.log("敲代码");
+      };
+      console.log("---------------------------------------");
+      console.log(win2.color);
+      console.log(win2.weight);
+      console.log(win2.u);
+      console.log(win2["model"]);
+      win2.work();
+      win2.listen();
+      win2.play();
+      win2.work();
+
+      // 创建一个电脑对象，该对象要有颜色、重量、品牌、型号，可以看电影、听音乐、打游戏和敲代码。
+      function Win(color, weight, brand, model) {
+        //创建一个对象（构建函数方法）
+        this.color = color;
+        this.weight = weight;
+        this.brand = brand;
+        this.model = model;
+        this.role = function (watch) {
+          console.log("看电影");
+        };
+        this.listen = function (music) {
+          console.log("听音乐");
+        };
+        this.play = function (game) {
+          console.log("打游戏");
+        };
+        this.work = function (knock) {
+          console.log("敲代码");
+        };
+      }
+      let win1 = new Win("蓝色", "12kg", "联想", "R7000");
+      console.log("---------------------------------------");
+      console.log(win1.color);
+      console.log(win1.weight);
+      console.log(win1.brand);
+      console.log(win1["model"]);
+      win1.role();
+      win1.listen();
+      win1.play();
+      win1.work();
+    </script>
+  </head>
+  <body></body>
+</html>

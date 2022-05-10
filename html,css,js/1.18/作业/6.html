@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //简易ATM
+      let sum = 100; //卡里本来有100
+      while (true) {//当while 后的条件为真时进行循环
+        let index = prompt("请输入你要的操作\n1.存钱\n2.取钱\n3.显示余额\n4.退出"); //弹出输入框
+        if (index == "1") {
+          //如果输入为1
+          let smoney = prompt("请输入你存的钱"); //弹出输入框
+          alert((sum += parseFloat(smoney))); //弹出的输入框输入的是字符型要转换为数字型 计算
+        } else if (index == "2") {
+          //如果输入为2
+          let wmoney = prompt("请输入你取的钱"); //弹出输入框
+          if (sum < wmoney) {  //如果取出来的钱比存进去的钱多则弹出余额不足 否则计算
+            alert("余额不足"); //弹出警示框
+          } else {
+            alert((sum -= parseFloat(wmoney))); //弹出的输入框输入的是字符型要转换为数字型 计算
+          }
+        } else if (index == "3") {
+          //如果输入为3
+          alert(sum); //弹出警示框显示余额
+        } else if (index == "4") {
+          //如果输入为4
+          alert("你正在退出");
+          break;//判断用以在循环内部的某个条件达成时终止循环
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+            top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://pic.qqtn.com/up/2017-12/2017122215035157361.gif" alt="">
+    <script>
+        let pic=document.querySelector('img')
+        document.addEventListener('mousemove',function(e){
+            // mousemove只要我们鼠标移动1px 就会触发这个事件
+            //每次鼠标移动我们都会获得新的坐标,把这些坐标作为图片的top和left值就可以移动图片
+            let x=e.pageX;
+            let y=e.pageY;
+            pic.style.left=x-120+'px';
+            pic.style.top=y-120+'px';
+            //不要忘记给left和top添加px单位
+        })
+    </script>
+</body>
+</html>

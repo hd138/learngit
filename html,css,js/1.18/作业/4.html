@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //接收用户输入的密码，若用户名为admin,密码为123456，则成功，否则一直弹出
+      let name = prompt("请输入用户名");
+      let paw = prompt("请输入密码");
+      while (name != "admin" && paw != "123456") {
+        id = prompt("请输入用户名");
+        paw = prompt("请输入密码");
+      }
+      alert("登录成功");
+    </script>
+  </head>
+  <body></body>
+</html>

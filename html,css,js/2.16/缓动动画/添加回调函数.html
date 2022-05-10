@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        position: absolute;
+        left: 0;
+        top: 200px;
+        display: block;
+        width: 150px;
+        height: 150px;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn500">点击张三到500</button>
+    <button class="btn800">点击张三到800</button>
+    <span>张三</span>
+    <script>
+      function animate(obj, target,callback) {
+        //   console.log(callback); callback=function(){}调用的时候callback()
+
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+          let step = (target - obj.offsetLeft) / 10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          if (obj.offsetLeft == target) {
+            clearInterval(obj.timer);
+            //回调函数写到定时器结束里面
+            if (callback) {
+                // 调用函数
+                callback();
+            }
+          }
+
+          obj.style.left = obj.offsetLeft + step + "px";
+        }, 15);
+      }
+      let span = document.querySelector("span");
+      let btn500 = document.querySelector(".btn500");
+      let btn800 = document.querySelector(".btn800");
+      btn500.addEventListener("click", function () {
+        animate(span, 500);
+      });
+      btn800.addEventListener("click", function () {
+        animate(span, 800,function(){
+            // alert('你好吗')
+            span.style.backgroundColor='red';
+        });
+      });
+    </script>
+  </body>
+</html>

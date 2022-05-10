@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // ['red','blue','red','green','pink','red'],求red出现的次数
+        let color=['red','blue','red','green','pink','red'];
+        let index=color.indexOf('red');
+        let num=0;
+        while (index!==-1) {
+            console.log(index);
+            num++
+            index=color.indexOf('red',index+1)
+        }
+        console.log('red出现的次数为'+num+'次');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

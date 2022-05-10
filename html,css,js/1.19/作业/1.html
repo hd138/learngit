@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //形成一个不包含0的新数组
+      //方法1
+    //   let arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+    //   let arr1 = [];
+    //   let j = 0;
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] != 0) {
+    //       arr1[j] = arr[i];
+    //       j++;
+    //     }
+    //   }
+    //   console.log(arr1);
+
+    //方法2
+      // let arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+      // let arr1 = [];
+      // for (let i = 0; i < arr.length; i++) {
+      //   if (arr[i] != 0) {
+      //     arr1[arr1.length] = arr[i];
+      //   }
+      // }
+      // console.log(arr1);
+      let arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+      let arr1=arr.filter(x=>x!=0);
+      console.log(arr1);
+    </script>
+  </head>
+  <body></body>
+</html>

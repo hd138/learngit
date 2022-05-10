@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+       position: relative;/*相对定位 */
+      width: 400px;
+      border-bottom: 1px solid #ccc;
+      margin: 100px auto;
+    }
+    .box input {
+      width: 370px;
+      height: 30px;
+      border: 0;
+      outline: none;
+    }
+    .box img {
+      position: absolute;/* 绝对定位 */
+      top: 10px;
+      right: 21px;
+      width: 24px;
+      height: 20px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <label for="">
+        <img src="https://marketplace.canva.cn/LID2E/MAB7ODLID2E/2/tl/canva-MAB7ODLID2E.png"id="eye"/>
+      </label>
+      <input type="password" id="pwd" />
+    </div>
+    <script>
+      //获取元素
+      let eye = document.getElementById("eye");
+      let pwd = document.getElementById("pwd");
+      // 注册事件 处理事件
+      let flag = 0;
+      eye.onclick = function () {
+        //   点击一次后flag一定要发生变化
+        if (flag == 0) {
+          eye.src ="https://i.52112.com/icon/256/20180126/11963/601132.png";   
+          pwd.type = "text";
+          flag = 1; // 赋值操作
+        } else {
+          eye.src = "https://marketplace.canva.cn/LID2E/MAB7ODLID2E/2/tl/canva-MAB7ODLID2E.png";
+          pwd.type = "password";
+          flag = 0;
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //传统注册方式只能写一次，如果有多个，会以最后一个window为准
+      //   window.onload = function () {
+      //     let btn = document.querySelector("button");
+      //     btn.addEventListener("click", function () {
+      //       alert("点击我");
+      //     });
+      //   };
+      //   window.onload = function () {
+      //     let btn = document.querySelector("button");
+      //     btn.addEventListener("click", function () {
+      //       alert("最后");
+      //     });
+      //   };
+      //使用addEventListener则没有限制
+      window.addEventListener("click", function () {
+        let btn = document.querySelector("button");
+        btn.addEventListener("click", function () {
+          alert("点击我1");
+        });
+        btn.addEventListener("click", function () {
+          alert("点击我2");
+        });
+      });
+    //   load等页面内容全部加载完毕，包含页面dom元素 图片 flash css 等等
+    // DOMContentLoaded 是DOM加载完毕 ，不包含falsh css 等就可以执行 加载速度比load快一些
+      document.addEventListener('DOMContentLoaded',function(){
+          alert(33)
+      })
+    </script>
+    <button>点击</button>
+    <!-- <script>
+        let btn=document.querySelector('button')
+        btn.addEventListener('click',function(){
+            alert('点击我')
+        })
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 250px;
+        margin: 100px auto;
+      }
+      .box li {
+        list-style: none;
+        float: left;
+        height: 24px;
+        width: 24px;
+        background-color: pink;
+        margin: 15px;
+        background: url(https://img-blog.csdnimg.cn/20210505093601596.png#pic_center)
+          no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      let lis = document.querySelectorAll("li");
+      for (let i = 0; i < lis.length; i++) {
+        //让索引号乘以44 就是每个背景的y坐标
+        let index = i * 44;
+        lis[i].style.backgroundPosition = '0 -'+index+'px';
+      }
+    </script>
+  </body>
+</html>

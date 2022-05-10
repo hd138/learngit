@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //格式化日期 年月日
+      let date = new Date();
+      console.log(date.getFullYear()); //返回当前日期的年
+      console.log(date.getMonth() + 1); //0 月 0-11得到月份小一个月，要月份加1
+      console.log(date.getDate()); //日
+      console.log(date.getDay()); //2 星期几 周天返回的是0
+
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let dates = date.getDate();
+      let arr = [
+        "星期日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六",
+      ]; //因为星期天返回的是0 所以要写在最前面
+      let day = date.getDay();
+      console.log(
+        "今天是：" + year + "年" + month + "月" + dates + "日 " + arr[day]
+      );
+      //时 分 秒
+      console.log(date.getHours()); //小时
+      console.log(date.getMinutes()); //分钟
+      console.log(date.getSeconds()); //秒
+      function getTime() {
+        let time = new Date();
+        let h = time.getHours();
+        h = h < 10 ? "0" + h : h;
+        let m = time.getMinutes();
+        m = m < 10 ? "0" + m : m;
+        let s = time.getSeconds();
+        s = s < 10 ? "0" + s : s;
+        return h + ":" + m + ":" + s;
+      }
+      console.log(getTime());
+    </script>
+  </head>
+  <body></body>
+</html>

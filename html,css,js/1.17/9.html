@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // for (let i = 1; i <= 3; i++) {
+      //   console.log("第" + i + "次");
+      //   for (let j = 1; j <= 3; j++) {
+      //     console.log("第" + j + "次");
+      //   }
+      // }
+      // let str = "";
+      // for (let i = 1; i <= 5; i++) {
+      //   for (let j = 1; j <= 5; j++) {
+      //     str = str + "♥";
+      //   }
+      //   str = str + "\n";
+      // }
+      // console.log(str);
+      let str = "";
+      let line=prompt('请输入行')
+      let column=prompt('请输入列')
+      for (let i = 1; i <= line; i++) {
+        for (let j = 1; j <= column; j++) {
+          str = str + "♥";
+        }
+        str = str + "\n";
+      }
+      console.log(str);
+    </script>
+  </head>
+  <body></body>
+</html>

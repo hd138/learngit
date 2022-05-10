@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 创建一个按钮对象，包含有宽、高、背景颜色和点击行为。
+      //利用对象字面量创建对象
+      let btn1 = {
+        width: "200px",
+        height: "400px",
+        backgroundColor: "红色",
+        click: function () {
+          console.log("点击返回值");
+        },
+      };
+
+      console.log(btn1.width);
+      console.log(btn1.height);
+      console.log(btn.backgroundColor);
+      btn.click();
+
+      //利用new Object来创建对象
+      let btn = new Object();
+      btn.width = "200px";
+      btn.height = "100px";
+      btn.backgroundColor = "黄色";
+      btn.click = function () {
+        console.log("点击按钮返回值");
+      };
+      console.log("-----------------------------------------");
+      console.log(btn.width);
+      console.log(btn.height);
+      console.log(btn.backgroundColor);
+      btn.click("点击按钮返回值");
+
+      //创建一个对象（构建函数方法）
+      function button(width, height, backgroundColor) {
+        this.width = width;
+        this.height = height;
+        this.backgroundColor = backgroundColor;
+        this.click = function (done) {
+          console.log(done);
+        };
+      }
+      let button1 = new button("100px", "300px", "黑色");
+      console.log("-----------------------------------------");
+      console.log(button1.width);
+      console.log(button1.height);
+      console.log(button1.backgroundColor);
+      button1.click("点击按钮返回值");
+    </script>
+  </body>
+</html>

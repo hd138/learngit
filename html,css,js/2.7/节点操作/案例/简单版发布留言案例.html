@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      textarea {
+        height: 200px;
+        width: 150px;
+        margin: 100px auto;
+      }
+      ul li {
+        background-color: pink;
+        list-style: none;
+        height: 21px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea>123</textarea>
+    <button>发布</button>
+    <ul>
+      <li>123</li>
+    </ul>
+    <script>
+      //获取元素
+      let btn = document.querySelector("button");
+      let text = document.querySelector("textarea");
+      let ul = document.querySelector("ul");
+      //注册事件
+      btn.onclick = function () {
+        if (text.value == "") {
+          alert("请输入内容");
+          return false;
+        } else {
+          // console.log(tetx.value);
+
+          //创建元素
+          let li = document.createElement("li");
+          // 先用li才能赋值
+          li.innerHTML=text.value
+          //添加元素
+        //   ul.appendChild(li);在后面插入
+        ul.insertBefore(li,ul.children[0]);//在前面插入
+        }
+      };
+    </script>
+  </body>
+</html>
