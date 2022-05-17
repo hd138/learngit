@@ -743,3 +743,300 @@ v-once：
     
 
 ### 
+
+
+
+### 9.表单绑定v-model
+
+- 表单控件在实际开发中是非常常见的。特别是对于用户信息的提交需要大量的表单
+- Vue中使用v-model指令来实现表单匀速的数据的双向绑定
+- 案例
+
+```html
+	<body>
+		<div id="app">
+      <!-- <input type="text" v-model="message"> -->
+      <!-- <input type="text" :value="message" @input="valueChange"> -->
+      <input type="text" :value="message" @input="message= this.message=$event.target.value">
+      {{message}}
+		</div>
+
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					message: '你好啊！',
+				},
+        methods: {
+          valueChange(event){
+            this.message=event.target.value
+          }
+        }
+			});
+		</script>
+	</body>
+```
+
+##### v-model原理
+
+- v-model其实是一个语法糖。他的背后本质上是包含俩个操作：
+
+  - v-bind绑一个value属性
+  - v-on指令给当前元素绑定input时间
+
+- 也就是说
+
+  - ```html
+      	<input type="text" v-model="message">
+    等同于
+          <input type="text" :value="message" @input="message= this.message=$event.target.value">
+    ```
+
+  
+
+##### v-model:radio
+
+当存在多个单选框时
+
+```html
+	<body>
+		<div id="app">
+			<label for="male">
+				<input type="radio" id="male" value="男" v-model="sex"/>男
+			</label>
+      <label for="female">
+				<input type="radio" id="female" value="女" v-model="sex"/>女
+			</label>
+      <h2>你选择的性别是：{{sex}}</h2>
+		</div>
+
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					message: '你好啊！',
+          sex:'男',
+				},
+			});
+		</script>
+	</body>
+```
+
+
+
+##### v-model:checkbox
+
+- 复选框分为俩种情况：单个勾选框和多个勾选框
+- 单个勾选框：
+  - v-model即为布尔值
+  - 此时input的value并不影响v-model的值
+- 多个复选框：
+  - 当是多个复选框时，因为可以选中多个，所以对应的data中的属性是一个数组
+  - 当选中某一个时，就会将input的value添加到数组中
+
+- ```html
+  <body>
+  		<div id="app">
+        <!-- 1.checkbox单选框 -->
+       <!-- <label for="agree">
+         <input type="checkbox" id="agree" v-model="isAgree">同意协议
+       </label>
+       <h2>你选择的是：{{isAgree}}</h2>
+       <button :disabled="!isAgree">下一步</button> -->
+  
+       <!-- 2.checkbox多选框 -->
+  
+         <input type="checkbox" value="篮球" v-model="hobbies">篮球
+         <input type="checkbox" value="足球" v-model="hobbies">足球
+         <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+         <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+  <h2>你的爱好是{{hobbies}}</h2>
+         
+  		</div>
+  
+  		<script src="../../js/vue.js"></script>
+  		<script>
+  			const app = new Vue({
+  				el: '#app', // 用于挂载要管理的元素
+  				data: {
+  					//定义数据
+  					message: '你好啊！',
+            isAgree:false,//单选框
+            hobbies:[],//多选框
+  				},
+  			});
+  		</script>
+  	</body>
+  ```
+
+  
+
+  
+
+##### v-model:select
+
+- 和checkbox一样，select也分为单选和多选俩种情况
+
+- 单选：只选择一个值
+
+  - v-model绑定的是一个值
+
+  - 当我们选中option中的一个时，会将它对应的value赋值到mySelect中
+
+    ```html
+    <body>
+    		<div id="app">
+    			<!-- 选择一个 -->
+    			<select name="abc" v-model="fruit">
+    				<option value="苹果">苹果</option>
+    				<option value="香蕉">香蕉</option>
+    				<option value="榴莲">榴莲</option>
+    				<option value="葡萄">葡萄</option>
+    			</select>
+    			<h2>你选择的是：{{fruit}}</h2>
+    
+    			<!-- 选择多个 -->
+    			<select name="abc" v-model="fruits" multiple>
+    				<option value="苹果">苹果</option>
+    				<option value="香蕉">香蕉</option>
+    				<option value="榴莲">榴莲</option>
+    				<option value="葡萄">葡萄</option>
+    			</select>
+    			<h2>你选择的是：{{fruits}}</h2>
+    		</div>
+    
+    		<script src="../../js/vue.js"></script>
+    		<script>
+    			const app = new Vue({
+    				el: '#app', // 用于挂载要管理的元素
+    				data: {
+    					//定义数据
+    					message: '你好啊！',
+    					fruit: '香蕉',
+    					fruits: '',
+    				},
+    			});
+    		</script>
+    	</body>
+    ```
+
+    
+
+##### 修饰符
+
+- lazy修饰符：
+  - 默认情况下，v-model默认是在input事件中同步输入框的数据的
+  - 也就是说，一旦有数据发生改变对应的data中的数据就会自动发生改变
+  - lazy修饰符可以让数据在失去焦点或者回车时才会更新
+
+- number修饰符：
+  - 默认情况下，在输入框中无论我们输入的h是字母还是数字，都会被当做字符串类型进行处理
+  - 但是如果我们希望处理的是数字类型，那么最好直接将内容当做数字来处理
+  - number修饰符可以让在输入框中输入的内容自动转换为数字类型
+
+- trim修饰符
+  - 如果输入的内容首尾有很多空格，通常我们希望将其去除
+  - trim修饰符可以过滤内容左右俩边的空格
+
+```html
+	<body>
+		<div id="app">
+      <!-- 1. 修饰符:lazy -->
+      <input type="text" v-model.lazy="message">
+      <h2>{{message}}</h2>
+
+      <!-- 2. 修饰符:number -->
+      <input type="number" v-model.number="age">
+      <h2>{{age}}-{{typeof(age)}}</h2>
+
+      <!-- 3. 修饰符:trim -->
+      <input type="text" v-model.trim="name">
+      <h2>你输入的名字是:{{name}}</h2>
+		</div>
+
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					message: '你好啊！',
+          age:0,
+          name:''
+				},
+			});
+		</script>
+	</body>
+```
+
+
+
+
+
+## 10.组件
+
+##### 1.注册组件的基本步骤
+
+1. 组件的使用分成三个步骤：
+   1. 创建组件构造器
+   2. 注册组件
+   3. 使用组件![zujianbuz](C:\Users\Administrator.DESKTOP-6R6A7OJ\Desktop\zujianbuz.png)
+
+```html
+<body>
+		<div id="app">
+			<!-- 3. 使用组件 -->
+			<my-cpn></my-cpn>
+			<my-cpn></my-cpn>
+			<my-cpn></my-cpn>
+			<my-cpn></my-cpn>
+			<my-cpn></my-cpn>
+		</div>
+		<div></div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			// 1.创建组件构造器对象
+			const cpnC = Vue.extend({
+				template: `
+        <div>
+          <h2>我是标题</h2>  
+          <p>我是内容，哈哈哈哈哈</p>
+          <p>我是内容，吼吼吼吼吼</p>
+        </div>`,
+			});
+
+			// 2. 注册组件
+			Vue.component('my-cpn', cpnC);
+
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					message: '你好啊！',
+				},
+			});
+		</script>
+	</body>
+```
+
+##### 2. 注册组件步骤解析
+
+1. Vue.extend():
+   1. 调用Vue.extend()创建的是一个组件构造器
+   2. 通常在创建组件构造器是，传入template代表我们自定义组件的模板
+   3. 该模板就是在使用到组件的地方，要显示的HTML代码
+   4. 事实上这种写法在Vue2.x的文档中已经看不到了
+2. Vue.component():
+   1. 调用Vue.component()是将刚才的组件构造器注册为一个组件，并且给它起一个组件的标签名称
+   2. 使用需要传递俩个参数：1.注册组件的标签名 2.组件构造器
+3. 组件必须挂载在某个Vue实例下，否则它不会生效
+
+##### 3.全局组件和局部组件
+
+- 当我们通过调用Vue.component()注册组件时，组件的注册是全局的
+  - 这意味着该组件可以在任意Vue实例下使用
+- 如果我们注册的组件是挂载在某个实例中，那么就是一个局部组件
