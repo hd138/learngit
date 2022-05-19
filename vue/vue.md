@@ -1040,3 +1040,271 @@ v-once：
 - 当我们通过调用Vue.component()注册组件时，组件的注册是全局的
   - 这意味着该组件可以在任意Vue实例下使用
 - 如果我们注册的组件是挂载在某个实例中，那么就是一个局部组件
+
+
+
+
+
+##### 4.父组件和子组件
+
+- 在前面我们看到了组件树：
+  - 组件和组件之间存在层级关系
+  - 而其中一种非常重要的关系就是父子组件的关系
+- 代码如下
+
+```html
+	<body>
+		<div id="app">
+
+			<cpn2></cpn2>
+		</div>
+		<div></div>
+		<script src="../../js/vue.js"></script>
+		<script>
+			// 1.创建第一个组件构造器(子组件)
+			const cpnC1 = Vue.extend({
+				template: `
+        <div>
+          <h2>我是标题1</h2>
+          <p>我是内容，哈哈哈哈</p>  
+        </div>`,
+			});
+
+			// 1.创建第二个组件构造器(父组件)
+			const cpnC2 = Vue.extend({
+				template: `
+        <div>
+          <h2>我是标题2</h2>
+          <p>我是内容，呵呵呵呵</p>  
+          <cpn1></cpn1>
+        </div>`,
+        components: {
+          cpn1:cpnC1
+        }
+			});
+
+      // root组件（根组件）
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					message: '你好啊！',
+					name: '黄都',
+				},
+				components: {
+					// cpn1: cpnC1,
+					cpn2: cpnC2,
+				},
+			});
+		</script>
+	</body>
+```
+
+
+
+- 父子组件错误的用法：以子标签的形式在Vue实例中使用
+  - 因为当子组件注册到父组件的components时，Vue会编译好父组件的模块
+    - 该模块的内容已经决定了父组件将要渲染的HTML相当于父组件中已经有了子组件中的内容了
+    - <cpn1></cpn1>是只能在父组件中被识别的
+    - 类似这种用法，<cpn1></cpn1>是会被浏览器忽略的
+
+##### 5.注册组件语法糖
+
+- 在上面注册组件的方式，可能会有些繁琐
+
+  - Vue为了简化这个过程，提供了注册的语法糖。
+  - 主要省去了调用Vue.extend()的步骤，而是可以直接使用一个对象来代替
+
+- 语法糖注册组件的代码
+
+  ```html
+  	<body>
+  		<div id="app">
+  			<cpn1></cpn1>
+  			<cpn2></cpn2>
+  		</div>
+  		<script src="../../js/vue.js"></script>
+  		<script>
+  			// 1. 全局组件注册的语法糖
+  			// 1. 创建组件构造器
+  			// const cpn1 = Vue.extend({
+  			//   template: `
+  			//   <div>
+  			//     <h2>我是标题1</h2>
+  			//     <p>我是内容，哈哈哈哈</p>
+  			//   </div>`,
+  			// })
+  
+  			// 2.注册组件 语法糖
+  			Vue.component('cpn1', {
+  				template: `
+  			  <div>
+  			    <h2>我是标题1</h2>
+  			    <p>我是内容，哈哈哈哈</p>
+  			  </div>`,
+  			});
+  
+  			const app = new Vue({
+  				el: '#app', // 用于挂载要管理的元素
+  				data: {
+  					//定义数据
+  					message: '你好啊！',
+  				},
+  				components: {
+  					// 注册局部组件的语法糖
+  					cpn2: {
+  						template: `
+                    <div>
+                      <h2>我是标题2</h2>
+                      <p>我是内容，呵呵呵呵</p>  
+                    </div>`,
+  					},
+  				},
+  			});
+  		</script>
+  	</body>
+  ```
+
+  
+
+##### 6.模板的分离写法
+
+- Vue提供了俩种方案来定义HTML模板内容
+
+  - 使用<script>标签
+
+  - 使用<template>标签
+
+  - ```html
+    <body>
+    		<div id="app">
+    			<cpn></cpn>
+    			<cpn></cpn>
+    			<cpn></cpn>
+    			<cpn></cpn>
+    		</div>
+    		<!-- 1.script标签， 注意：类型必须是text/x-template-->
+    		<!-- <script type="text/x-template" id="cpn">
+    			<div>
+    			  <h2>我是标题</h2>
+    			  <p>我是内容</p>
+    			</div>
+    		</script> -->
+    
+    		<!-- 2. template标签 -->
+    		<template id="cpn">
+    			<div>
+    				<h2>我是标题</h2>
+    				<p>我是内容,hhhhh</p>
+    			</div>
+    		</template>
+    
+    		<script src="../../js/vue.js"></script>
+    		<script>
+    			// 注册一个全局组件
+    			Vue.component('cpn', {
+    				template: '#cpn',
+    			});
+    
+    			const app = new Vue({
+    				el: '#app', // 用于挂载要管理的元素
+    				data: {
+    					//定义数据
+    					message: '你好啊！',
+    				},
+    			});
+    		</script>
+    	</body>
+    ```
+
+    
+
+##### 7.组件中data为什么必须是函数
+
+- **“*vue中data必须是函数是为了保证组件的独立性和可复用性*,data是一个函数,组件实例化的时候这个函数将会被调用,返回一个对象,计算机会给这个对象分配一个内存地址,你实例化几次,就分配几个内存地址,他们的地址都不一样,所以每个组件中的数据不会相互干扰,改变其中一个组件的状态,其它组件不变。”**
+
+##### 8. 父子组件的通信
+
+- 子组件是不能引起父组件或者Vue实例的数据的
+- 在开发中，往往一些数据确实需要从上层传递到下层
+  - 比如在一个页面中，我们从服务器请求到了很多的数据
+  - 其中一部分数据，并非是文我们整个页面的大组件来展示的，而是需要下面的子组件来展示
+  - 这个时候并不会让子组件再次发送一个网络请求，而是直接让大组件（父组件）将数据传递给小组件（子组件）
+- 有俩种方法来进行父子组件之间的通信
+  - 通过props向子组件传递数据
+  - 通过事件向父组件发送信息
+
+![1652948210251](C:\Users\Administrator.DESKTOP-6R6A7OJ\Desktop\1652948210251.png)
+
+###### 1.props基本用法
+
+- 在组件中，使用选项props来声明需要从父级接收到的数据
+
+- props的值有两种方式：
+
+  - 方式一：字符串数组，数组中的字符串就是传递时的名称
+  - 方式二：对象，对象可以设置传递时的类型，可以设置默认值等
+
+  代码：
+
+  ```html
+  <body>
+  		<div id="app">
+  			<!-- 一定要用v-bind -->
+  			<cpn :cmovies="movies" :cmessage="message"></cpn>
+  		</div>
+  
+  		<!-- template标签 -->
+  		<template id="cpn">
+  			<div>
+  				<ul>
+  					<li v-for="item, in cmovies">{{item}}</li>
+  				</ul>
+  				<!-- <p>{{cmovies}}</p> -->
+  				<h2>{{cmessage}}</h2>
+  			</div>
+  		</template>
+  
+  		<script src="../../js/vue.js"></script>
+  		<script>
+  			// 父传子 props
+  			const cpn = {
+  				template: '#cpn',
+  				props: ['cmovies', 'cmessage'],
+  				data() {
+  					return {};
+  				},
+  				methods: {},
+  			};
+  
+  			const app = new Vue({
+  				el: '#app', // 用于挂载要管理的元素
+  				data: {
+  					//定义数据
+  					message: '你好啊！',
+  					movies: ['海王', '海贼王', '海尔兄弟'],
+  				},
+  				components: {
+  					// 'cpn':cpn
+  					cpn,
+  				},
+  			});
+  		</script>
+  	</body>
+  ```
+
+  
+
+###### 2.props数据验证
+
+- 数组之外，我们也可以使用对象，当需要对props进行类型等验证时，就需要对象写法了
+- 验证支持以下数据类型
+  - String
+  - Nunber
+  - Boolean
+  - Array
+  - Object
+  - Date
+  - Function
+  - Symbol
+- 当我们有自定义构造函数时，验证也支持自定义的类型
