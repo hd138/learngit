@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 父组件模板 -->
+		<div id="app">
+			<cpn @increment="changtal" @decrement="changtal"></cpn>
+			<h2>{{num}}</h2>
+		</div>
+
+		<!-- 子组件模板 -->
+		<template id="cpn">
+			<div>
+				<button @click="increment">+1</button>
+				<button @click="decrement">-1</button>
+			</div>
+		</template>
+		<script src="../../js/vue.js"></script>
+		<script>
+			// 子组件
+			const cpn = {
+				template: '#cpn',
+				data() {
+					return {
+						tal: 0,
+					};
+				},
+				methods: {
+					increment() {
+						this.tal++;
+						this.$emit('increment', this.tal);
+					},
+					decrement() {
+						this.tal--;
+						this.$emit('decrement', this.tal);
+					},
+				},
+			};
+			// 父组件
+			const app = new Vue({
+				el: '#app', // 用于挂载要管理的元素
+				data: {
+					//定义数据
+					num: 0,
+				},
+				components: {
+					cpn,
+				},
+				methods: {
+					changtal(tal) {
+						console.log('changtal', tal);
+						this.num = tal;
+					},
+				},
+			});
+		</script>
+	</body>
+</html>
