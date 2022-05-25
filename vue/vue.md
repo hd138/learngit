@@ -1,4 +1,4 @@
-# 		vue.js
+# 		 vue.js
 
 ### 1.vue的初体验
 
@@ -1308,3 +1308,76 @@ v-once：
   - Function
   - Symbol
 - 当我们有自定义构造函数时，验证也支持自定义的类型
+
+##### 9.子传父
+
+- props用于父组件向子组件传递数据，还有一种是子组件传递到父组件中
+
+- 我们需要用自定义事件来完成
+
+  - 当子组件向父组件传递数据时，就要用到自定义事件
+  - v-on不仅仅可以用于监听DOM事件，也可以用于组件之间的自定义事件
+
+- 流程
+
+  - 在子组件中，通过$emit()来触发事件
+
+  - 在父组件中通过v-on来监听子组件事件
+
+  - ```html
+    	<body>
+    		<!-- 父组件模板 -->
+    		<div id="app">
+    			<cpn @item-click="cpnClick"></cpn>
+    		</div>
+    
+    		<!-- 子组件模板 -->
+    		<template id="cpn">
+    			<div>
+    				<button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    			</div>
+    		</template>
+    		<script src="../../js/vue.js"></script>
+    		<script>
+    			// 子组件
+    			const cpn = {
+    				template: '#cpn',
+    				data() {
+    					return {
+    						categories: [
+    							{ id: 'aaa', name: '热门推荐' },
+    							{ id: 'bbb', name: '手机数码' },
+    							{ id: 'ccc', name: '家用家电' },
+    							{ id: 'ddd', name: '电脑办公' },
+    						],
+    					};
+    				},
+    				methods: {
+    					btnClick(item) {
+    						// 发射事件:自定义事件
+    						this.$emit('item-click', item);
+    					},
+    				},
+    			};
+    			// 父组件
+    			const app = new Vue({
+    				el: '#app', // 用于挂载要管理的元素
+    				data: {
+    					//定义数据
+    					message: '你好啊！',
+    					name: '黄都',
+    				},
+    				components: {
+    					cpn,
+    				},
+    				methods: {
+    					cpnClick(item) {
+    						console.log('cpnClick', item);
+    					},
+    				},
+    			});
+    		</script>
+    	</body>
+    ```
+
+    
