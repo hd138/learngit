@@ -1334,11 +1334,8 @@ v-once：
     		<!-- 子组件模板 -->
     		<template id="cpn">
     			<div>
-    				<button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
-    			</div>
-    		</template>
-    		<script src="../../js/vue.js"></script>
-    		<script>
+    				<button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>6
+                    
     			// 子组件
     			const cpn = {
     				template: '#cpn',
@@ -1379,5 +1376,126 @@ v-once：
     		</script>
     	</body>
     ```
+    
+    
+
+##### 10.父子组件的访问方式：$children
+
+- 有时候我们需要父组件直接访问子组件，子组件直接访问父组件，或者是子组件访问根组件
+
+  - 父组件访问子组件：使用$children或者$refs reference（引用）
+  - 子组件访问父组件：使用$parent
+
+- $children的访问
+
+  - this.$children是一个数组类型，它包含了所有子组件对象。
+
+  - 通过一个遍历，取出所有子组件的message状态
+
+    ```html
+    	<body>
+    		<div id="app">
+    			<cpn></cpn>
+    			<cpn></cpn>
+    			<cpn ref="aaa"></cpn>
+    			<button @click="btnClick">按钮</button>
+    		</div>
+    		<template id="cpn">
+    			<div>
+    				我是子组件
+    				<h2></h2>
+    			</div>
+    		</template>
+    		<script src="../js/vue.js"></script>
+    		<script>
+    			const app = new Vue({
+    				el: '#app',
+    				data: {
+    					message: '你好啊',
+    				},
+    				methods: {
+    					btnClick() {
+    						// 1. $cjildren
+    						// console.log(this.$children);
+    						// this.$children[0].showMessage();
+    						// 	for (let c of this.$children) {
+    						// 		console.log(c.name);
+    						// 		c.showMessage();
+    						// 	}
+    
+    						// 2.$refs =>对象类型，默认是一个空的对象 re='bbb'
+    						console.log(this.$refs.aaa.name);
+    					},
+    				},
+    				components: {
+    					cpn: {
+    						template: '#cpn',
+    						data() {
+    							return {
+    								name: '我是子组件的name',
+    							};
+    						},
+    						methods: {
+    							showMessage() {
+    								console.log('showMessage');
+    							},
+    						},
+    					},
+    				},
+    			});
+    		</script>
+    	</body>
+    ```
 
     
+
+### 11.slot的基本使用
+
+- 在子组件中使用特殊元素<slot>就可以为子元素开启一个插槽，该插槽插入什么内容取决于父组件如何使用，插槽的基本使用<slot></slot>
+
+-  插槽的默认值<slot><nutton>按钮</button></slot>
+
+-  如果有多个值，同时放到组件进行替换时，一起作为替换元素
+
+- ```html
+  	<body>
+  		<div id="app">
+  			<cpn><button>按钮</button></cpn>
+  			<cpn><span>哈哈哈</span></cpn>
+  			<cpn>
+  				<i>嗨嗨嗨</i>
+  				<div>我是div</div>
+  				<p>杀杀杀</p>
+  			</cpn>
+  			<cpn><button>啊啊啊</button></cpn>
+  			<cpn></cpn>
+  			<cpn></cpn>
+  		</div>
+  		<template id="cpn">
+  			<div>
+  				<h2>我是组件</h2>
+  				<p>吼吼吼吼吼</p>
+  				<!-- <button>按钮</button> -->
+  				<slot><button>按钮</button></slot>
+  			</div>
+  		</template>
+  		<script src="../js/vue.js"></script>
+  		<script>
+  			const app = new Vue({
+  				el: '#app',
+  				data: {
+  					message: '你好啊',
+  				},
+  				components: {
+  					cpn: {
+  						template: '#cpn',
+  					},
+  				},
+  			});
+  		</script>
+  	</body>
+  ```
+
+  
+
+### 12.slot具名插槽的使用
