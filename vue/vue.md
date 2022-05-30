@@ -1228,7 +1228,7 @@ v-once：
 - 子组件是不能引起父组件或者Vue实例的数据的
 - 在开发中，往往一些数据确实需要从上层传递到下层
   - 比如在一个页面中，我们从服务器请求到了很多的数据
-  - 其中一部分数据，并非是文我们整个页面的大组件来展示的，而是需要下面的子组件来展示
+  - 其中一部分数据，并非是文我们整个页面的大组件来展示的，而是需要下面的子组件来展示 
   - 这个时候并不会让子组件再次发送一个网络请求，而是直接让大组件（父组件）将数据传递给小组件（子组件）
 - 有俩种方法来进行父子组件之间的通信
   - 通过props向子组件传递数据
@@ -1498,4 +1498,108 @@ v-once：
 
   
 
-### 12.slot具名插槽的使用
+### 12.编译作用域
+
+父组件模板的所有东西都会在父级作用域内编译；子组件模板的所有对象都会在子级作用域内编译
+
+### 13.作用域插槽
+
+作用域插槽就是父组件替换插槽的标签，但是内容由子组件来提供
+
+### 14.export基本使用
+
+###### 1.导出变量
+
+- export指令用于导出变量，比如以下代码
+
+- 写法1
+
+  ```js
+  export let num1 =1000
+  export let age1 = 1.88
+  ```
+
+- 写法2
+
+  ```js
+  let name = '小明';
+  let age = 18;
+  let flag = true;
+  
+  export {name, flag, sum };
+  ```
+
+  
+
+###### 2. 导出函数或者类
+
+- export指令用于导出函数或者类，比如以下代码
+
+  ```js
+  export function mul (num1 , num2){
+    return num1 + num2
+  }
+  
+  export class Person {
+    run(){
+      console.log('在奔跑');
+    }
+  }
+  ```
+
+  
+
+###### 3.export default
+
+- 在某种情况下，一个模块中包含某个功能，我们并不希望给这个功能命名，而且让导入者可以自己来命名，就可以用export default
+
+  ```js
+  export default function(arg){
+    console.log(arg);
+  }
+  ```
+
+- 在来到其他js里面使用
+
+- 这里的addr是我们自己命名的，可以根据需要命名它对应的名字
+
+  ```js
+  import addr from './aaa.js';
+  addr('你好啊');
+  ```
+
+- 注意export default在同一个模块中，不允许存在多个
+
+### 15.import
+
+- 使用了export指令导入了模块对外提供的接口，就可以通过import命名来加载对应的模块了
+
+- 要先引入js文件，类型type要设置为module
+
+  ```html
+  		<script src="./aaa.js " type="module"></script>
+  		<script src="./bbb.js" type="module"></script>
+  		<script src="./mmm.js" type="module"></script>
+  ```
+
+- import指令用于导入模块中的内容
+
+  ```js
+  import { num1, age1 } from './aaa.js';
+  console.log(num1, age1);
+  ```
+
+- 如果变量很多，一个个导入显然有点麻烦；
+
+  - 通过*可以导入模块中所有的export变量
+
+  - 但是通常情况下我们需要给*起一个别名，方便后续使用
+
+    ```js
+    	import * as aaa from './aaa.js';
+    	console.log(aaa.flag);
+    	console.log(aaa.height);
+    ```
+
+    
+
