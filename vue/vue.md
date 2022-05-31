@@ -1603,3 +1603,45 @@ v-once：
 
     
 
+### 16.什么是webpack
+
+- 从本质上来讲，webpack是一个现代的JavaScript应用的静态模块打包工具
+- 从俩点来解释上面这句话，就是模块和打包
+
+### 17.打包
+
+- 就是将webpack中的各种资源模块进行打包合并成一个或者多个包
+- 并且在打包的过程中，还可以对资源进行处理，比如压缩图片，将scss转成css，将ES6语法转成ES5语法，将typescript转成JavaScript等等操作
+
+### 18.grunt/gulp和webpack的不同
+
+- grunt/gulp更加强调的是前端流程的自动化，模块化不是他的核心
+- webpack更加强调模块化开发管理，而文件压缩合并、预处理等功能是他附带的功能
+
+### 19.webpack的安装
+
+- 安装webpack首先需要安装Node.js，Node.js自带了软件包管理工具npm
+
+- 查看自己的node版本
+
+  ```
+  node -v
+  ```
+
+- 全局安装webpack
+
+  ```
+  npm install webpack@3.6.0 -g
+  ```
+
+- 局部安装webpack
+  - --sava-dev是开发依赖，项目打包后不需要继续使用的
+
+```
+cd 对应目录
+npm install webpack@3.6.0 --sava-dev
+```
+
+- 为什么全局安装后还要局部安装
+  - 在终端直接执行webpack命令，使用的全局安装的webpack
+  - 当在package.json定义了scripts时，其中包含了webpack命令，那么时用的是局部webpack
