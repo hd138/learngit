@@ -1645,3 +1645,213 @@ npm install webpack@3.6.0 --sava-dev
 - 为什么全局安装后还要局部安装
   - 在终端直接执行webpack命令，使用的全局安装的webpack
   - 当在package.json定义了scripts时，其中包含了webpack命令，那么时用的是局部webpack
+
+### 20.安装和使用vue-router
+
+- ##### 在模块化工程中使用它（因为是一个插件，所以通过Vue.use()来安装路由功能）
+
+  - 第一步：导入路由对象。并且调用Vue,use(VueRouter) "import Vue from 'vue' "
+  - 第二步：创建路由实例，并且传入路由映射配置 import VueRouter from 'vue-router'
+  - 第三步：在Vue实例中挂载创建的路由实例 "Vue.use(VueRouter)"
+
+- 使用vue-router的步骤：
+
+  - 第一步：创建路由组件
+  - 第二步：配置路由映射，组件和路径映射关系
+  - 第三步：使用路由：通过<router-link>和<router-view>
+
+- <router-link>:该标签是一个vue-router中已经内置的组件，它会被渲染成一个<a>标签
+- <router-view>:该标签会根据当前路径，动态渲染出不同的组件
+- 网页的其他内容，比如顶部的标题和导航，或者底部的一些版权信息等会和<router-view>处于同一个等级
+- 在路由切换时，切换的时<router-view>挂载的组件，其他内容不会发生改变
+
+### 21.路由的默认路径
+
+- 我们需要多配置一个映射，才会让路径默认跳到首页
+
+- ```js
+  {
+        path: "",
+        // redirect重定向
+        redirect: "/Home"
+      },
+  ```
+
+  
+
+- 配置解析
+
+  - 我们在router中又配置了一个映射
+  - path配置的是根路径：/
+  - redirect是重定向，也就是我们将路径重定向到/Home的路径下，这样就可以的到我们想要的结果了
+
+### 22.router-link补充
+
+- <router-link>还有一些其他属性：<router-link to='/home' tag='li'>
+  - tag:tag可以指定<router-link>之后渲染成什么组件，比如上面的代码会被渲染成一个<li>元素 而不是<a>
+  - replace:replace不会留下history记录，所以指定replace的情况下，后退键返回不能返回到上一个页面中
+  - active-class：当<router-link>对应的路由匹配成功时，会自动给当前元素设置一个router-link-active的class，设置active-class可以修改默认名称
+    - 在进行高亮显示的导航菜单或者底部tabbar时，会用到该类
+    - 但是通常不会修改类的属性，会直接使用默认的router-link-active即可
+
+### 23.懒加载的方式
+
+- 方式一：结合Vue的异步组件和Webpack的代码分析
+
+- ```js
+  const Home = resolve = > {require.ensure(
+  ['../components/Home.Vue'],()=>{
+  resolve(require('../components/Home.vue'))
+  })}
+  ```
+
+- 方式二：AMD写法
+
+- ```js
+  const About = resolve => require(['../components/About.vue'],resolve)
+  ```
+
+- 方式三：在ES6中我们可以有更加简单的写法来组织Vue异步组件和webpack的代码分割
+
+- ```js
+  const Home = () => import('../components/Home.vue')
+  ```
+
+  
+
+### 24.传递参数的方式
+
+- 传递参数主要有俩种类型：params和query
+- params的类型：
+  - 配置路由格式：/router/:id
+  - 传递的方式：在path后面跟上对应的值
+  - 传递后形成的路径：/router/123,router/abc
+
+- query的类型
+  - 配置路由格式：/router，也就是普通配置
+  - 传递的方式：对象中使用query的key作为传递方式
+  - 传递后形成的路径：/router?id=123，/router?id=abc
+
+### 25.$route和$router是有区别的
+
+- ##### $router为VueRouter实例，想要导航到不同的URL，则使用$router.push方法
+
+- $route为当前router跳转对象里面可以获取name、path、query、params等
+
+### 26.keep-alive遇见vue-router
+
+- keep-alive是Vue内置的一个组件，可以使被包含的租金保留状态，或避免被重新渲染
+- 重要的属性：
+  - include-字符串或正则表达，只有匹配的组件会被缓存
+  - exclude-字符串或者正则表达式，任何匹配的组件都不会被缓存
+- router-view也是一个组件，如果直接被包在keep-alive里面，所有的路径匹配到的视图组件都会被缓存
+
+### 27.Promise
+
+##### 1.什么是Promise
+
+- Promise是异步编程的一种解决方案
+
+##### 2.Promise三种状态
+
+- 首先，当我们开发中有异步操作时就可以给异步操作包装一个Promise
+
+- 异步操作后会有三种状态
+
+  - pending：等待状态，比如正在进行网络请求，或者定时器没有到时间
+  - fulfill：满足状态，当我们回调了resolve时，就处于该状态，并且会回调.then()
+  - reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
+
+  
+
+##### 3.链式调用简写
+
+- 简化版代码 
+  - 如果我们希望数据直接包装成Promise.resolve，那么早then中可以直接返回数据
+  - 注意代码中，return Promise.resovle(data)改成了return data结果还是一样的
+
+### 28.Vuex
+
+##### 1.vuex是做什么的？
+
+- 官方：Vuex是一个专为Vue.js应用程序开发的状态管理模式
+
+  - 它采用集中式储存管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
+  - Vuex也集成到vue的官方调试工具devtools extension，提供了诸如零配置的time-teavel调试、状态快照导入导出等高级调试功能
+
+- 状态管理到底是什么
+
+  - 其实，你可以简单的将其看成把需要多个组件共享的变量全部存储在一个对象里面
+  - 然后，将这个对象放在顶层的Vue实例中，让其他组件可以使用
+
+  
+
+##### 2.使用Vuex的count
+
+1. 步骤
+
+   1. 提取出一个公共的store对象，用于保存在多个组件中共享的状态
+   2. 将store对象放置在new Vue对象中，这样就可以保证在所有的组件中都可以使用到
+   3. 在其他组件中使用store对象中保存的状态即可
+      1. 通过this.$store.state属性的方法来访问状态
+      2. 通过this.$store.commit('mutation中方法')来修改状态
+
+2. 注意事项
+
+   1. 我们通过提交mutaion的方法，而非直接改变store.state.counter
+   2. 这是因为Vuex可以更明确的追踪状态的变化，所以不要直接改变store.state,counter的值
+
+3. 代码：
+
+   ```vue
+   <template>
+     <div id="app">
+       <h2>{{message}}</h2>
+       <h2>{{$store.state.counter}}</h2>
+       <button @click="addition">+</button>
+       <button @click="subtraction">-</button>
+       <hellovuex/>
+     </div>
+   </template>
+   
+   <script>
+   import Hellovuex from './components/Hellovuex';
+   
+   export default {
+     name: 'App',
+      components:{
+       Hellovuex
+     },
+     data() {
+       return {
+         message:"你好vuex",
+         counter:0
+       }
+     },
+     methods: {
+       addition(){
+         this.$store.commit('increment')
+       },
+       subtraction(){
+         this.$store.commit('decrenebt')
+       }
+     },
+    
+   }
+   ```
+
+   
+
+##### 3.vuex的核心概念
+
+- State
+- Getters
+- Mutation
+- Action
+- Module
+
+##### 4.State单一状态树
+
+- 如果你的状态信息式保存到多个State对象中的，那么之后管理和维护都会变得很困难
+- 所以Vuex也使用了单一状态来该你了应用层级的全部状态
+- 单一状态树能够让我们最直接的方式找到某个状态的片段，而且在之后的维护和调试过程中，也可以非常方便的管理和维护

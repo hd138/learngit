@@ -27,3 +27,4 @@ addr('你好啊');
 import * as aaa from './aaa.js';
 console.log(aaa.flag);
 console.log(aaa.height);
+      
